@@ -214,7 +214,7 @@ export default function HeroSection() {
         >
           Tell us where you&apos;re relocating, your budget, and what matters most — and
           we&apos;ll send you hand-curated, verified rental options. No listings to scroll.
-          No scams. No guesswork.
+          Verified landlords. Zero uncertainty.
         </p>
 
         {/* CTA Group */}

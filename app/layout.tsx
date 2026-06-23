@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "GetBnB — Your European Rental Concierge",
   description:
-    "Relocating to Europe? Tell us your budget, destination, and move-in date. We'll send you hand-curated, verified rental matches — fast. No listings to scroll. No scams.",
+    "Relocating to Europe? Tell us your budget, destination, and move-in date. We'll send you hand-curated, verified rental matches — fast. No listings to scroll. No guesswork.",
   keywords: [
     "European rental",
     "expat housing",

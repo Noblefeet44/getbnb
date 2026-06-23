@@ -22,7 +22,7 @@ const testimonials = [
     to: "🇳🇱 Amsterdam",
     type: "Corporate relocation",
     quote:
-      "I'd heard nightmare stories about the Amsterdam rental market — fake listings, queues of 200 applicants per apartment, cash-only scams. GetBnB bypassed all of that entirely. They had a verified, English-friendly landlord lined up for us in under two days. Worth every cent.",
+      "I'd heard nightmare stories about the Amsterdam rental market — hundreds of applicants per apartment, landlords who never respond, three-month waits. GetBnB bypassed all of that entirely. They had a verified, English-friendly landlord lined up for us in under two days. Worth every cent.",
     rating: 5,
     avatar: "SV",
     color: "#2E4272",

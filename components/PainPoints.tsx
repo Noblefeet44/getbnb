@@ -12,9 +12,9 @@ const painPoints = [
       </svg>
     ),
     tag: "Safety Risk",
-    title: "Rental Scams Are Rampant",
+    title: "Unverified Markets Are a Gamble",
     body:
-      "Fraudulent listings. Fake landlords. Advance-fee fraud. Every year, thousands of expats lose thousands of euros to rental scams in Europe's biggest cities. Renting blind in a foreign country is a minefield — especially from a distance.",
+      "Fraudulent listings. Unresponsive landlords. Unreturned deposits. Every year, thousands of expats lose time, money, and opportunities navigating Europe's fragmented rental markets — especially when searching from abroad.",
     cta: "We've already done the vetting.",
   },
   {
@@ -41,7 +41,7 @@ const painPoints = [
     tag: "Time Pressure",
     title: "You Don't Have 3 Months to Search",
     body:
-      "You're relocating for a job offer, a new role, or a better life. Your employer expects you there in six weeks. You can't spend evenings scrolling Idealista, Immobiliare, or Spotahome hoping for a non-scam listing.",
+      "You're relocating for a job offer, a new role, or a better life. Your employer expects you there in six weeks. You can't spend evenings scrolling Idealista, Immobiliare, or Spotahome hoping that the next listing is legitimate.",
     cta: "We compress your search to days, not months.",
   },
 ];

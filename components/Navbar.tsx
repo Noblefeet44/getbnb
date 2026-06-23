@@ -165,7 +165,7 @@ export default function Navbar() {
           style={{
             background: "var(--color-white)",
             borderTop: "1px solid var(--color-border)",
-            padding: "1.5rem var(--space-xl)",
+            padding: "1.25rem var(--space-md)",
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
