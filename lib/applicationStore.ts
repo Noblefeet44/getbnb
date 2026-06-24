@@ -51,16 +51,20 @@ export interface ApplicationRecord {
   travelDocFileUrl: string;
 }
 
-import { insertApplication, isSupabaseConfigured, supabase } from "./supabaseClient";
+import {
+  insertApplication,
+  isAirtableConfigured,
+  getApplicationFromAirtable,
+} from "./airtableClient";
 
 // ── In-memory dev store ────────────────────────────────────────────────────
 const devStore = new Map<string, ApplicationRecord>();
 
 export async function saveApplication(record: ApplicationRecord): Promise<void> {
-  if (isSupabaseConfigured()) {
+  if (isAirtableConfigured()) {
     const { success, error } = await insertApplication(record);
     if (!success) {
-      throw new Error(`Failed to save application to Supabase: ${error}`);
+      throw new Error(`Failed to save application to Airtable: ${error}`);
     }
   } else {
     // Dev mode — in-memory only
@@ -74,16 +78,10 @@ export async function saveApplication(record: ApplicationRecord): Promise<void> 
 }
 
 export async function getApplication(applicationId: string): Promise<ApplicationRecord | null> {
-  if (isSupabaseConfigured() && supabase) {
+  if (isAirtableConfigured()) {
     try {
-      const { data, error } = await supabase
-        .from("applications")
-        .select("*")
-        .eq("application_id", applicationId)
-        .single();
-
-      if (error) {
-        console.error("[applicationStore] getApplication error:", error);
+      const data = await getApplicationFromAirtable(applicationId);
+      if (!data) {
         return null;
       }
       return data as any;

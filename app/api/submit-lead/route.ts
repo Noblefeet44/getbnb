@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { insertLead } from "@/lib/supabaseClient";
+import { insertLead } from "@/lib/airtableClient";
 
 // ─── Validation Schema ────────────────────────────────────────────────────────
 const LeadSchema = z.object({
@@ -168,10 +168,10 @@ export async function POST(request: NextRequest) {
     const data = result.data;
     const leadId = `GETBNB-LEAD-${Date.now()}`;
 
-    // ── Save to Supabase ─────────────────────────────────────────────────────
+    // ── Save to Airtable ─────────────────────────────────────────────────────
     const dbResult = await insertLead({ leadId, ...data });
     if (!dbResult.success) {
-      console.error("[submit-lead] Supabase insertion failed:", dbResult.error);
+      console.error("[submit-lead] Airtable insertion failed:", dbResult.error);
     }
 
     // ── Log to console in development ────────────────────────────────────────
