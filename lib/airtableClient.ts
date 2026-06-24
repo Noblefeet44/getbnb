@@ -41,6 +41,11 @@ async function airtableRequest(
     if (!response.ok) {
       const errorMsg = data.error?.message || `Airtable API error (${response.status})`;
       console.error(`[Airtable Error] Request to ${endpoint} failed:`, errorMsg, data);
+      console.error(
+        `[Airtable Debug Info] Base ID: "${airtableBaseId}" (length: ${airtableBaseId.length}), ` +
+        `Token: "${airtablePat.substring(0, 10)}..." (length: ${airtablePat.length}), ` +
+        `Endpoint: "${endpoint}"`
+      );
       return { success: false, error: errorMsg };
     }
 
