@@ -5,13 +5,8 @@
  * If credentials are not present, it logs the operations to the console and falls back.
  */
 
-const airtablePat = process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN || "";
-const airtableBaseId = process.env.AIRTABLE_BASE_ID || "";
-const leadsTable = process.env.AIRTABLE_LEADS_TABLE || "Leads";
-const applicationsTable = process.env.AIRTABLE_APPLICATIONS_TABLE || "Applications";
-
 export const isAirtableConfigured = () => {
-  return !!airtablePat && !!airtableBaseId;
+  return !!process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN && !!process.env.AIRTABLE_BASE_ID;
 };
 
 /**
@@ -21,6 +16,8 @@ async function airtableRequest(
   endpoint: string,
   options: { method: string; body?: any }
 ): Promise<{ success: boolean; data?: any; error?: string }> {
+  const airtablePat = process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN || "";
+  const airtableBaseId = process.env.AIRTABLE_BASE_ID || "";
   const url = `https://api.airtable.com/v0/${airtableBaseId}/${endpoint}`;
   
   try {
@@ -62,6 +59,8 @@ export async function insertLead(lead: any): Promise<{ success: boolean; error?:
     console.log("[Airtable Mock] insertLead called in dev/fallback mode.");
     return { success: true };
   }
+
+  const leadsTable = process.env.AIRTABLE_LEADS_TABLE || "Leads";
 
   // Map fields into Airtable camelCase format
   const fields = {
@@ -107,6 +106,8 @@ export async function insertApplication(app: any): Promise<{ success: boolean; e
     console.log("[Airtable Mock] insertApplication called in dev/fallback mode.");
     return { success: true };
   }
+
+  const applicationsTable = process.env.AIRTABLE_APPLICATIONS_TABLE || "Applications";
 
   const fields = {
     applicationId: app.applicationId || "",
@@ -165,6 +166,8 @@ export async function getApplicationFromAirtable(
   if (!isAirtableConfigured()) {
     return null;
   }
+
+  const applicationsTable = process.env.AIRTABLE_APPLICATIONS_TABLE || "Applications";
 
   // Find record by formula lookup on applicationId
   const formula = encodeURIComponent(`{applicationId} = '${applicationId}'`);
